@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: no
+  become: yes
+  become_user: ubuntu
+  roles:
+    - install_nginx
