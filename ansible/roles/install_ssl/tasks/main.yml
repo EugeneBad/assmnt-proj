@@ -1,0 +1,7 @@
+- name: Copy Installation scripts
+  copy:
+    src: files/install_ssl.sh
+    dest: /var/tmp/install_ssl.sh
+
+- name: Run ssl install script
+  command: bash /var/tmp/install_ssl.sh

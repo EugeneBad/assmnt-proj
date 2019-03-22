@@ -1,4 +1,4 @@
-resource "aws_subnet" "assmnt-proj-subnet" {
-  vpc_id     = "${aws_vpc.assmnt-proj-vpc.id}"
-  cidr_block = "10.0.1.0/24"
+resource "aws_subnet" "assmnt-prep-subnet" {
+  vpc_id = "${aws_vpc.assmnt-prep-vpc.id}"
+  cidr_block = "10.0.0.0/24"
 }

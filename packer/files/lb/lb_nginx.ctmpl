@@ -1,0 +1,37 @@
+upstream backend {
+  {{range service "backend"}}
+  server {{.Address}}:8000;
+  {{end}}
+}
+
+upstream frontend {
+  {{range service "frontend"}}
+  server {{.Address}}:80;
+  {{end}}
+}
+
+server {
+    server_name hochetto.com;
+  listen 80;
+  listen 443 ssl;
+
+  if ($scheme = http) {
+    return 301 https://$host$request_uri;
+  }
+
+  ssl_certificate /etc/letsencrypt/live/hochetto.com/cert.pem;
+  ssl_certificate_key /etc/letsencrypt/live/hochetto.com/privkey.pem;
+  
+  location ~ ^/(.*) {
+    proxy_pass http://frontend;
+  }
+}
+
+server {
+  listen 8000;
+  location ~ ^/(.*) {
+    proxy_pass http://backend;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+}

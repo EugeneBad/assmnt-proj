@@ -1,6 +1,20 @@
 - hosts: all
-  gather_facts: no
   become: yes
   become_user: ubuntu
+  gather_facts: no
   roles:
-    - install_nginx
+   - start_up
+
+- hosts: lb
+  become: yes
+  become_user: ubuntu
+  gather_facts: no
+  roles:
+    - install_ssl
+
+- hosts: lb
+  become: yes
+  become_user: ubuntu
+  gather_facts: no
+  roles:
+    - ssh_rotation

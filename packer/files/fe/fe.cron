@@ -1,0 +1,1 @@
+@reboot . /var/tmp/fe-startup.sh &

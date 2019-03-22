@@ -1,0 +1,29 @@
+{
+  "variables": {
+    "region": "us-east-1",
+    "access_key": "{{env `AWS_KEY_ID`}}",
+    "secret_key": "{{env `AWS_SECRET_KEY`}}"
+  },
+
+  "builders": [{
+      "type": "amazon-ebs",
+      "ssh_username": "ubuntu",
+      "access_key": "{{user `access_key`}}",
+      "secret_key": "{{user `secret_key`}}",
+      "instance_type": "t2.micro",
+      "ami_name": "lb-base-image",
+      "region": "{{user `region`}}",
+      "source_ami": "ami-0735ea082a1534cac"
+    }
+
+  ],
+
+  "provisioners": [{
+    "type": "file",
+    "source": "files/lb/",
+    "destination": "/var/tmp"
+  }, {
+    "type": "shell",
+    "script": "files/lb/lb-provisioner.sh"
+  }]
+}

@@ -1,2 +1,0 @@
-- name: Update packages and install nginx
-  command: bash -c "sudo apt-get update; sudo apt-get install nginx -y"

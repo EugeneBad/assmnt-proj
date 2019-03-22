@@ -1,0 +1,5 @@
+- name: Rotate ssh keys
+  authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ lookup('file', '/Users/eugene/Desktop/Andela/assmnt-prep/ansible/roles/ssh_rotation/files/all_hosts_ssh_key.pub') }}"

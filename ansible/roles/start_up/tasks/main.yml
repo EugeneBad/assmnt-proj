@@ -1,0 +1,2 @@
+- name: Run start-up script
+  script: files/{{host_name}}-startup.sh

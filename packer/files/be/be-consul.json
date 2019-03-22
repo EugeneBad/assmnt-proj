@@ -1,0 +1,5 @@
+{
+  "retry_join": ["hochetto.com"],
+  "data_dir": "/tmp/consul",
+  "node_name": "Back End Node"
+}

@@ -1,0 +1,8 @@
+{
+  "ui": true,
+  "server": true,
+  "data_dir": "/var/tmp/consul",
+  "bootstrap_expect": 1,
+  "client_addr": "0.0.0.0",
+  "node_name": "Load Balancer Node"
+}
